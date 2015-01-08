@@ -1,0 +1,19 @@
+<form class="form-signin" ng-submit="login()">
+  <h2 class="form-signin-heading">Вход в личный кабинет</h2>
+  <div ng-show="invalidLogin" class="alert alert-danger">Неверно заданы логин или пароль</div>
+
+  <label for="inputEmail" class="sr-only">Email</label>
+  <input type="email" id="inputEmail" class="form-control" placeholder="yourmail@mail.ru" ng-model="credentials.email" required autofocus>
+  <label for="inputPassword" class="sr-only">Пароль</label>
+  <input type="password" id="inputPassword" class="form-control" ng-model="credentials.password" placeholder="пароль" required>
+  <div class="checkbox hidden">
+    <label>
+      <input type="checkbox" value="remember-me">Запомнить меня
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block has-spinner" type="submit">
+    <span class="spinner"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></span>
+    {{buttonText}}
+  </button>
+</form>
+

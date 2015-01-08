@@ -1,0 +1,191 @@
+<div class="modal fade" id="newUser">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Новый пользователь</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" ng-submit="addUser(user)">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Контрагент</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" ng-model="user.legalPerson" placeholder="ИП Крапольский А. В." required>
+            </div>
+
+            <label for="inputEmail3" class="col-sm-1 control-label">Город</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" ng-model="user.city" placeholder="Ижевск" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Фамилия</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" ng-model="user.lastname" placeholder="Крапольский" required>
+            </div>
+
+            <label for="inputEmail3" class="col-sm-1 control-label">Имя</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" ng-model="user.firstname" placeholder="Агафон" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-5">
+              <input type="email" class="form-control" ng-model="user.email" placeholder="Email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Пароль</label>
+            <div class="col-sm-5">
+              <input type="password" class="form-control" ng-model="user.password" placeholder="Пароль" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="priceType" ng-model="user.priceType" value="Д+">Д+
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="priceType" ng-model="user.priceType" value="VIP">VIP
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Создать</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<!-- Page Heading -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+                            Пользователи
+                        </h1>
+    <ol class="breadcrumb">
+      <li>
+        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+      </li>
+      <li class="active">
+        <i class="fa fa-table"></i> Пользователи
+      </li>
+    </ol>
+  </div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Управление пользователями</h2>
+
+    <div class="btn-toolbar">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#newUser">
+        Добавить нового ползователя
+      </button>
+      <!--<button class="btn">Импорт</button>
+                            <button class="btn">Экспорт</button>-->
+    </div>
+
+    <div class="filter-panel">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-inline" role="form">
+            <div class="btn-group" data-toggle="buttons">
+
+              <label class="btn btn-success active">
+                <input type="checkbox" autocomplete="off" checked>VIP
+              </label>
+              <label class="btn btn-primary active">
+                <input type="checkbox" autocomplete="off">Д+
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="filter-col" style="margin-right:0;" for="pref-search">Поиск:</label>
+              <input type="text" class="form-control input-sm" id="pref-search">
+            </div>
+            <!-- form group [search] -->
+            <div class="form-group">
+              <label class="filter-col" style="margin-right:0;" for="pref-orderby">Order by:</label>
+              <select id="pref-orderby" class="form-control">
+                <option>Descendent</option>
+              </select>
+            </div>
+            <!-- form group [order by] -->
+            <div class="form-group">
+              <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                <label>
+                  <input type="checkbox">Remember parameters</label>
+              </div>
+              <button type="submit" class="btn btn-default filter-col">
+                <span class="glyphicon glyphicon-record"></span> Save Settings
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="well">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Цены</th>
+            <th>Email</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Город</th>
+            <th>Контрагент</th>
+            <th style="width: 50px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in users">
+            <td>{{u.id}}</td>
+            <td><span class="label" ng-class="'label-'+lbType[u.priceType]">{{u.priceType}}</span></td>
+            <td>{{u.email}}</td>
+            <td>{{u.firstname}}</td>
+            <td>{{u.lastname}}</td>
+            <td>{{u.city}}</td>
+            <td>{{u.legalPerson}}</td>
+            <td>
+              <a href="user.html"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a href="#myModal" role="button" data-toggle="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <nav>
+      <ul class="pagination">
+        <li><a href="#">Пред.</a>
+        </li>
+        <li><a href="#">1</a>
+        </li>
+        <li><a href="#">2</a>
+        </li>
+        <li><a href="#">3</a>
+        </li>
+        <li><a href="#">4</a>
+        </li>
+        <li><a href="#">След.</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+<!-- /.row -->

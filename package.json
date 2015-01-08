@@ -1,0 +1,14 @@
+{
+  "name": "get-pricelist",
+  "version": "1.0.0",
+  "description": "Get your pricelist",
+  "main": "server.js",
+  "repository": "",
+  "author": "Aleksandr Yanitskiy <demo.alex@gmail.com>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+<form class="form-download-price">
+  <button ng-repeat="p in pricelists" ng-class="'btn-'+btnType[p.type]" class="btn btn-lg btn-block" ng-click="downloadPricelist(p.token);" type="button">Скачать прайс {{p.type}}</button>
+  <br/>
+  <br/>
+  <button class="btn btn-danger" ng-click="logout()">Выход</button>
+</form>
