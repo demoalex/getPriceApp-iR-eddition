@@ -7,7 +7,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./server/clientAppRouter');
+var client = require('./server/clientAppRouter');
+var admin = require('./server/adminAppRouter');
 var pricelists = require('./server/api/pricelists/pricelistsRouter');
 
 var mongoose = require('mongoose');
@@ -37,7 +38,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', client);
+app.use('/admin',admin);
 app.use('/api/pricelists/', pricelists);
 
 // catch 404 and forward to error handler

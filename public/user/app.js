@@ -37,7 +37,8 @@ angular.module('getPriceApp', [
     }).otherwise({
       redirectTo: '/login'
     });
-
+    
+    $locationProvider.html5Mode(true);
   })
   .run(function($rootScope, $location, $cookieStore, authService) {
 

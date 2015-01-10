@@ -13,8 +13,8 @@ angular.module('getPriceAppAdmin', [
   
   $stateProvider
   .state('admin', {
-    //abstract: true,
-    url: '/admin',
+    abstract: true,
+    url: '',
     template: "<div class='container-fluid' ui-view></div><!-- /.container-fluid -->",
     //templateUrl: 'index.html',
     resolve: {
@@ -36,7 +36,7 @@ angular.module('getPriceAppAdmin', [
     controller: 'UserController'
   });
 
-  $urlRouterProvider.otherwise('/admin/pricelists');
+  $urlRouterProvider.otherwise('/pricelists');
   $locationProvider.html5Mode(true);
 })
 .run(function($rootScope, $location, $cookieStore, $state, authService) {
