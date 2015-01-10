@@ -1,14 +1,36 @@
+# Routes
 
-Welcome to your Node.js project on Cloud9 IDE!
+Separate API routes from Client AngJS app.
 
-This chat example showcases how to use `socket.io` with a static `express` server.
+Client's routes goes here:
+/
 
-## Running the server
+API:
+/api/
 
-1) Open `server.js` and start the app by clicking on the "Run" button in the top menu.
+# REST API 
 
-2) Alternatively you can launch the app from the Terminal:
+| URL                 | HTTP Verb | Request Body | Result                   | Access                |
+| ------------------- | --------- | ------------ | ------------------------ | --------------------- |
+| /api/users          | GET       | empty        | return all users         | admin only            |
+| /api/users          | POST      | JSON string  | create new user          | admin only            |
+| /api/users/:id      | GET       | empty        | returns single user      | user itself + admin   |
+| /api/users/:id      | PUT       | JSON string  | updates user             | user itself + admin   |
+| /api/users/:id      | DELETE    | empty        | deletes user             | admin only            |
+| /api/pricelists     | GET       | empty        | return all pricelists    | user specific + admin |
+| /api/pricelists     | POST      | JSON string  | create new pricelist     | admin only            |
+| /api/pricelists/:id | GET       | empty        | returns single pricelist | user specific + admin |
+| /api/pricelists/:id | PUT       | JSON string  | updates pricelist        | admin only            |
+| /api/pricelists/:id | DELETE    | empty        | deletes pricelist        | admin only            |
 
-    $ node server.js
+# Client App Routes
+## Not authorized
+/*** -> /login 
+## Authorzed (user)
+/ -> /download-pricelist (page with buttons for pricelists downloads)
+/download/:pricelist-token (download specific price)
+/logout
+## Authorzed (admin)
+/admin -> /admin/pricelists
+/admin/users
 
-Once the server is running, open the project in the shape of 'https://projectname-username.c9.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
