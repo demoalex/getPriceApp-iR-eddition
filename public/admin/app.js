@@ -6,7 +6,7 @@ angular.module('getPriceAppAdmin', [
   'getPriceApp.common.services',
   'getPriceApp.common.models',
   'getPriceAppAdmin.controllers'
-]).config(function($stateProvider, $urlRouterProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   /* Routes
    *******************************/
@@ -37,7 +37,7 @@ angular.module('getPriceAppAdmin', [
   });
 
   $urlRouterProvider.otherwise('/admin/pricelists');
-  //$locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
 })
 .run(function($rootScope, $location, $cookieStore, $state, authService) {
 
